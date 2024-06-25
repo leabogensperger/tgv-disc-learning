@@ -1,20 +1,13 @@
 import numpy as np
 import matplotlib.pyplot as plt
-import imageio
 import cv2
 import argparse
 import os
-import json
-import pickle
-from datetime import datetime
-from skimage.metrics import structural_similarity as ssim
 
 import torch
 import torch.fft
 import torch.nn.functional as F
 import sys
-from torchvision.transforms.functional import rotate
-from torchvision.transforms import InterpolationMode 
 
 try:
     from pad2d_op import pad2d, pad2dT
@@ -34,7 +27,7 @@ def parse_arguments(args):
     parser.add_argument('--pd_fact', type=int, default=1e0) # 1e1 for 0.05% noise, 1e0 for 0.1% noise
     parser.add_argument('--max_it', type=int, default=10000) # eval for more i.e. 10000 iterations
     
-    parser.add_argument('--adjoint_mode', type=int, default=3) # V1: using autograd, V2: zero-padding, V3: CUDA op with more padding options
+    parser.add_argument('--adjoint_mode', type=int, default=1) # V1: using autograd, V2: zero-padding, V3: CUDA op with more padding options
     parser.add_argument('--pad_mode', type=str, default='reflect') 
     parser.add_argument('--use_ref', type=bool, default=False) 
     parser.add_argument('--nK', type=int, default=4) 
@@ -42,7 +35,7 @@ def parse_arguments(args):
     parser.add_argument('--ker', type=int, default=3) 
 
     # load learned filters
-    parser.add_argument('--load_filters', type=bool, default=True) 
+    parser.add_argument('--load_filters', type=bool, default=False) 
 
     return parser.parse_args()
 
