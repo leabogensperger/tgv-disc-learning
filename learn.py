@@ -28,7 +28,7 @@ def parse_arguments(args):
     parser.add_argument('--pd_fact', type=int, default=1e0) # 1e1 for 0.05% noise, 1e0 for 0.1% noise
     parser.add_argument('--max_it', type=int, default=10000) # eval for more i.e. 10000 iterations
     
-    parser.add_argument('--adjoint_mode', type=int, default=3) # V1: using autograd, V2: zero-padding, V3: CUDA op with more padding options
+    parser.add_argument('--adjoint_mode', type=int, default=1) # V1: using autograd, V2: zero-padding, V3: CUDA op with more padding options
     parser.add_argument('--pad_mode', type=str, default='reflect') 
     parser.add_argument('--nK', type=int, default=4) 
     parser.add_argument('--nL', type=int, default=4) 

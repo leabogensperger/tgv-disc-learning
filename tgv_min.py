@@ -29,7 +29,7 @@ def parse_arguments(args):
     
     parser.add_argument('--adjoint_mode', type=int, default=1) # V1: using autograd, V2: zero-padding, V3: CUDA op with more padding options
     parser.add_argument('--pad_mode', type=str, default='reflect') 
-    parser.add_argument('--use_ref', type=bool, default=False) 
+    parser.add_argument('--use_ref', type=bool, default=True) 
     parser.add_argument('--nK', type=int, default=4) 
     parser.add_argument('--nL', type=int, default=4) 
     parser.add_argument('--ker', type=int, default=3) 
